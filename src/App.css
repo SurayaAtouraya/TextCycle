@@ -1,0 +1,5 @@
+/* Bottom Sheet Drawer */
+body > div.MuiDrawer-root.MuiDrawer-modal > div.MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorBottom.MuiPaper-elevation16 {
+    width: 1280px;
+    margin: 0 auto;
+}
