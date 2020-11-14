@@ -4,7 +4,6 @@ import MessageList from './MessageList'
 import './Messenger.css';
 import './Compose.css'
 
-
   class Messenger extends React.Component
   {
     constructor(props){

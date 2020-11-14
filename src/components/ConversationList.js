@@ -14,12 +14,12 @@ import './ConversationList.css'
   {	
 
   	const conversations = [
-						{name:"George Name",text:"This is a message"},
-						{name:"John Smith",text:"This is a message"},
-						{name:"Joe Shmoe",text:"This is a message"},
-						{name:"Philip James",text:"This is a message"},
-						{name:"Sam Mom",text:"This is a message"}
+						{name:"John Smith",text:"This is a message",photo:0},
+						{name:"Joe Shmoe",text:"This is a message",photo:1},
+						{name:"Philip James",text:"This is a message",photo:2},
+						{name:"Sam Mom",text:"This is a message",photo:3}
 					];
+
   	return (<div>
   				<h1>Messages</h1>
 
@@ -35,6 +35,7 @@ import './ConversationList.css'
               key={conversation.name}
               text = {conversation.text}
               name = {conversation.name}
+              photo = {conversation.photo}
             />)}
   			
   			</div>)
