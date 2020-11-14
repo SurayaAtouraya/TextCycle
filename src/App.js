@@ -11,7 +11,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Fab from '@material-ui/core/Fab';
 import BookDialog from './components/dialogs/BookDialog';
 import CheckoutDialog from './components/dialogs/CheckoutDialog';
-import Users from './components/Users';
+import Messenger from './components/Messenger';
 import {
   BrowserRouter as Router,
   Switch,
@@ -105,8 +105,8 @@ function App() {
             <Button variant="contained" color="primary" component={Link} to="/">Back to Home page</Button>
             </Route>
 
-            <Route path="/Users">
-              <Users></Users>
+            <Route path="/Messenger">
+              <Messenger></Messenger>
             </Route>
 
           </Switch>

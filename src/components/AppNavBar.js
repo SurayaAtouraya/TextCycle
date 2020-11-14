@@ -152,7 +152,7 @@ const AppNavBar = (props) => {
           <div className={classes.sectionDesktop}>
 
             {/* Messages to user */}
-            <IconButton aria-label="show 4 new mails" color="inherit" href="/Users">
+            <IconButton aria-label="show 4 new mails" color="inherit" href="/Messenger">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
               </Badge>
