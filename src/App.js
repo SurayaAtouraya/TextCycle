@@ -105,7 +105,7 @@ function App() {
             <Button variant="contained" color="primary" component={Link} to="/">Back to Home page</Button>
             </Route>
 
-            <Route path="/users">
+            <Route path="/Users">
               <Users></Users>
             </Route>
 
