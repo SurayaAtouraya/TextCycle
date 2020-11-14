@@ -22,6 +22,13 @@ import './ConvoListItem.css';
 						{name:"Sam Mom",text:"This is a message"}
 					];
   	return (<div>
+  			<div className="conversation-search">
+		        <input
+		          type="search"
+		          className="conversation-search-input"
+		          placeholder="Search Messages"
+		        />
+		    </div>
   				<h1>Messages</h1>
   				{conversations.map(conversation =>
             <ConvoListItem
