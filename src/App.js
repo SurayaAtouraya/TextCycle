@@ -18,6 +18,7 @@ import {
   Link
 } from "react-router-dom";
 import Button from '@material-ui/core/Button';
+import SearchCard from './components/SearchCard';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -90,10 +91,14 @@ function App() {
                 <Grid container spacing={3}>
                   <Grid item xs={12}>
                     <h1>search bar goes here</h1>
+                    <SearchCard></SearchCard>
                     <Button variant="contained" color="primary" component={Link} to="/search">Simulate Search</Button>
                   </Grid>
                   <Grid item xs={12}>
                     <h1>IF not logged in, show sign up/ login page instead</h1>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <BookListingCard></BookListingCard>
                   </Grid>
                 </Grid>
               </Container>
@@ -103,6 +108,7 @@ function App() {
             <Route path="/search">
             <h1>search page</h1>
             <h1>Should display search bar, sort functionality, filter function</h1>
+            <SearchCard></SearchCard>
             <Button variant="contained" color="primary" component={Link} to="/">Back to Home page</Button>
             </Route>
 
