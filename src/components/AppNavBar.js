@@ -15,7 +15,6 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -153,7 +152,7 @@ const AppNavBar = (props) => {
           <div className={classes.sectionDesktop}>
 
             {/* Messages to user */}
-            <IconButton aria-label="show 4 new mails" color="inherit">
+            <IconButton aria-label="show 4 new mails" color="inherit" href="/Users">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
               </Badge>
@@ -170,7 +169,6 @@ const AppNavBar = (props) => {
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={props.toggleShoppingCart('bottom', true)}
               color="inherit"
               onClick={() => props.openCheckoutDialog()}
             >
