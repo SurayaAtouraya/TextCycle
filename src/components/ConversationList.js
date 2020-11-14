@@ -1,15 +1,14 @@
 import React from 'react';
 import ConvoListItem from './ConvoListItem'
-import './ConvoListItem.css';
+import moment from 'moment';
+import './ConversationList.css'
 
 
   class ConversationList extends React.Component
   {
     constructor(props){
-      super(props)
-    
+      super(props)    
     }
-
 
   render()
   {	
@@ -22,6 +21,8 @@ import './ConvoListItem.css';
 						{name:"Sam Mom",text:"This is a message"}
 					];
   	return (<div>
+  				<h1>Messages</h1>
+
   			<div className="conversation-search">
 		        <input
 		          type="search"
@@ -29,13 +30,13 @@ import './ConvoListItem.css';
 		          placeholder="Search Messages"
 		        />
 		    </div>
-  				<h1>Messages</h1>
   				{conversations.map(conversation =>
             <ConvoListItem
               key={conversation.name}
               text = {conversation.text}
               name = {conversation.name}
             />)}
+  			
   			</div>)
   }
 

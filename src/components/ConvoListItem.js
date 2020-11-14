@@ -1,3 +1,4 @@
+import './ConvoListItem.css';
 
 import React from 'react';
 

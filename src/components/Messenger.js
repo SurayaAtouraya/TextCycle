@@ -1,5 +1,8 @@
 import React from 'react';
 import ConversationList from './ConversationList';
+import MessageList from './MessageList'
+import './Messenger.css';
+import './Compose.css'
 
 
   class Messenger extends React.Component
@@ -32,7 +35,7 @@ import ConversationList from './ConversationList';
       }
       ];
 
-      const styles = {
+  const styles = {
   container: {
     flex: 1,
     display: "flex",
@@ -62,13 +65,22 @@ import ConversationList from './ConversationList';
 
     
       return (
+        <div className="messenger">
         <div className="scrollable sidebar">
           <ConversationList />
         </div>
 
-        // <div className="scrollable content">
-          // <MessageList />
-        // </div>
+        <div className="scrollable content">
+          <MessageList />
+          <div className="compose">
+            <input
+              type="text"
+              className="compose-input"
+              placeholder="Type a message, @name"
+            />
+          </div>
+        </div>
+        </div>
               )
               
   }
