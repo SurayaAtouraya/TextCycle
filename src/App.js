@@ -12,6 +12,7 @@ import Fab from '@material-ui/core/Fab';
 import BookDialog from './components/dialogs/BookDialog';
 import CheckoutDialog from './components/dialogs/CheckoutDialog';
 import Messenger from './components/Messenger';
+import SellBookForm from './components/SellBookForm';
 import {
   BrowserRouter as Router,
   Switch,
@@ -113,6 +114,10 @@ function App() {
 
             <Route path="/Messenger">
               <Messenger></Messenger>
+            </Route>
+
+             <Route path="/Sellbook">
+              <SellBookForm></SellBookForm>
             </Route>
 
           </Switch>
