@@ -11,6 +11,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Fab from '@material-ui/core/Fab';
 import BookDialog from './components/dialogs/BookDialog';
 import CheckoutDialog from './components/dialogs/CheckoutDialog';
+import Messenger from './components/Messenger';
 import {
   BrowserRouter as Router,
   Switch,
@@ -81,11 +82,10 @@ function App() {
 
   return (
     <div>
-      <AppNavBar toggleShoppingCart={toggleShoppingCart} openCheckoutDialog={openCheckoutDialog}/>
       <Router>
+      <AppNavBar toggleShoppingCart={toggleShoppingCart} openCheckoutDialog={openCheckoutDialog}/>
         <div>
           <Switch>
-
             {/* Home page, should contain search bar for books, if not logged in, only display sign in/up result. */}
             <Route exact path="/">
               <Container maxWidth="lg">
@@ -104,25 +104,19 @@ function App() {
                 </Grid>
               </Container>
             </Route>
-
             {/* Result of user search here */}
             <Route path="/search">
               <SearchRoute bookDialogIsOpen={bookDialogIsOpen} setBookDialogIsOpen={setBookDialogIsOpen}
                            addToCart={addToCart}></SearchRoute>
             </Route>
 
-            <Route path="/users">
+            <Route path="/Messenger">
+              <Messenger></Messenger>
             </Route>
 
           </Switch>
 
           <ShoppingCartDrawer toggleShoppingCart={toggleShoppingCart} isShoppingCartOpened={isShoppingCartOpened}></ShoppingCartDrawer>
-
-          {/* Deprecated, using nav bar item */}
-          {/* <Fab onClick={toggleShoppingCart('bottom', true)} color="primary" style={{position: 'fixed', bottom: '16px', left: 'calc(50% - 28px)'}}>
-            <ShoppingCartIcon />
-          </Fab> */}
-
           <BookDialog bookDialogIsOpen={bookDialogIsOpen} closeBookDialog={closeBookDialog}></BookDialog>
           <CheckoutDialog shoppingCart={shoppingCart} checkoutDialogIsOpen={checkoutDialogIsOpen} closeCheckoutDialog={closeCheckoutDialog}></CheckoutDialog>
         </div>
