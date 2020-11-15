@@ -15,9 +15,9 @@ import './ConversationList.css'
 
   	const conversations = [
 						{name:"John Smith",text:"This is a message",photo:0},
-						{name:"Joe Shmoe",text:"This is a message",photo:1},
+						{name:"Joe Shirma",text:"This is a message",photo:1},
 						{name:"Philip James",text:"This is a message",photo:2},
-						{name:"Sam Mom",text:"This is a message",photo:3}
+						{name:"Sam Deesa",text:"This is a message",photo:3}
 					];
 
   	return (<div>
