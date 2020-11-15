@@ -1,6 +1,7 @@
 import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import { InputLabel,Input, FormHelperText,Button, MenuItem,Select,TextField} from '@material-ui/core';
+import './SellBookForm.css'
 
 function SellBookForm(props){
 	return (
@@ -50,8 +51,12 @@ function SellBookForm(props){
           }}
         />
 	  <FormHelperText id="my-helper-text">Enter the price of your book.</FormHelperText>
-	  <Button variant="contained">Cancel</Button>
-	  <Button variant="contained" color="primary" /*onClick ={}*/> Submit </Button>
+	  <br></br>
+	  <div id="container1">
+	  	<Button id ="button1" variant="contained">Cancel</Button>
+	  	<div class="divider"/>
+	  	<Button id ="button2"  variant="contained" color="primary" /*onClick ={}*/> Submit </Button>
+	  </div>		
 			</FormControl>
 		   )
 }
