@@ -78,7 +78,7 @@ const BookListingCard = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant="outlined" color="primary">
+        <Button variant="outlined" color="primary" onClick={() => props.addToCart()}>
             Add to Cart
         </Button>
         <Button variant="contained" color="primary">

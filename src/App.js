@@ -19,6 +19,7 @@ import {
 } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import SearchCard from './components/SearchCard';
+import SearchRoute from './components/routes/SearchRoute';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,12 +42,12 @@ function App() {
     {bookName: 'Book Name', sellerLocation: 'Toronto, ON', price: 15, id: 4},
   ]);
 
-  const addToCart = () => {
-
+  const addToCart = (book) => {
+    setShoppingCart([...shoppingCart, book]);
+    alert('y');
   }
 
   const deleteCartItem = () => {
-    alert('y');
   }
 
 
@@ -106,10 +107,8 @@ function App() {
 
             {/* Result of user search here */}
             <Route path="/search">
-            <h1>search page</h1>
-            <h1>Should display search bar, sort functionality, filter function</h1>
-            <SearchCard></SearchCard>
-            <Button variant="contained" color="primary" component={Link} to="/">Back to Home page</Button>
+              <SearchRoute bookDialogIsOpen={bookDialogIsOpen} setBookDialogIsOpen={setBookDialogIsOpen}
+                           addToCart={addToCart}></SearchRoute>
             </Route>
 
             <Route path="/users">

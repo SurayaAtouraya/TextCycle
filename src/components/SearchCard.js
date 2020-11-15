@@ -4,6 +4,12 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +50,8 @@ const SearchCard = () => {
           <div className={classes.flex}>
             <form className={classes.inner} style={{width: '600px'}} noValidate autoComplete="off" >
               <TextField style={{width: '100%'}} label="Book Name" variant="filled"/>
-              <Button style={{height: '56px', borderRadius: 0, boxShadow: 'none'}} variant="contained" size="large" color="primary" className={classes.margin}>
+              <Button style={{height: '56px', borderRadius: 0, boxShadow: 'none'}} variant="contained" size="large" color="primary" className={classes.margin}
+                      component={Link} to="/search">
                 Search
               </Button>
             </form>
