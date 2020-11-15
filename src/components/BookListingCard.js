@@ -14,11 +14,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import textbook from '../img/textbook3.jpg';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import ReportIcon from '@material-ui/icons/Report';
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +52,7 @@ const BookListingCard = (props) => {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea onClick={() => openBookDialog()}>
+      <CardActionArea>
         <CardHeader
           action={
             <div>
@@ -72,19 +70,18 @@ const BookListingCard = (props) => {
             </Avatar>
           }
           title={props.bookData.name}
-          subheader="Hamilton, ON"
+          subheader={props.bookData.sellerLocation}
         />
         <CardMedia 
           style={{objectFit: 'fill'}}
           component="img"
-          alt="Contemplative Reptile"
           height="400"
-          image={textbook}
+          image={props.bookData.img}
           title="Contemplative Reptile"
         />
       </CardActionArea>
       <CardActions>
-        <Button variant="outlined" color="primary" onClick={() => props.addToCart({name: 'bookName', sellerLocation: 'sellerLocation', price: 30, id: null})}>
+        <Button variant="outlined" color="primary" onClick={() => props.addToCart(props.bookData)}>
             Add to Cart
         </Button>
         <Button variant="contained" color="primary">
@@ -92,6 +89,7 @@ const BookListingCard = (props) => {
         </Button>
       </CardActions>
     </Card>
+    
   );
 }
 

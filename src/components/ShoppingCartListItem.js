@@ -16,16 +16,6 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import CheckoutDialog from './dialogs/CheckoutDialog';
 import { DeleteCartItemContext } from './../App';
-
-// const useStyles = makeStyles( (theme) => ({
-//     root: {
-//       // width: '100%',
-//       // maxWidth: 360,
-//       backgroundColor: theme.palette.background.paper,
-//       // borderRadius: 4,
-//       // boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
-//     },
-//   }));
   
   const ShoppingCartListItem = (props) => {
 
@@ -37,10 +27,10 @@ import { DeleteCartItemContext } from './../App';
                 <ImageIcon />
                 </Avatar>
             </ListItemAvatar>
-            <ListItemText style={{width: '100%'}} primary={props.item.bookName} secondary={props.item.sellerLocation} />
+            <ListItemText style={{width: '100%'}} primary={props.item.name} secondary={props.item.sellerLocation} />
             <ListItemText secondary={"$" + props.item.price.toString()} style={{textAlign: 'right', margin: 0, marginRight: 16}}/>
             <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
+                <IconButton edge="end" aria-label="delete" onClick={() => props.deleteCartItem(props.item)}>
                 <ClearIcon />
                 </IconButton>
             </ListItemSecondaryAction>

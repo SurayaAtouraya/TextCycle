@@ -10,11 +10,19 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import BookListingCard from '../BookListingCard';
-
+import BookDialog from '../dialogs/BookDialog';
 
 const SearchRoute = (props) => {
 
-    console.log(props.sampleBooks)
+    const [bookDialogIsOpen, setBookDialogIsOpen] = React.useState(false);
+
+    // const openBookDialog = () => {
+    //     setBookDialogIsOpen(true);
+    //   };
+    
+    //   const closeBookDialog = () => {
+    //     setBookDialogIsOpen(false);
+    //   };
 
     const bookListings = 
     props.sampleBooks.map( 
@@ -43,6 +51,8 @@ const SearchRoute = (props) => {
                     {bookListings}
                 </Grid>
             </Container>
+
+            {/* <BookDialog bookDialogIsOpen={bookDialogIsOpen} closeBookDialog={closeBookDialog} bookData={props.bookData}></BookDialog> */}
         </div>
     );
 

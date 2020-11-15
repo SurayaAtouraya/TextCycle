@@ -220,7 +220,7 @@ const QontoConnector = withStyles({
     function getStepContent(step) {
       switch (step) {
         case 0:
-          return <ShoppingCartList shoppingCart={props.shoppingCart}></ShoppingCartList>;
+          return <ShoppingCartList shoppingCart={props.shoppingCart} deleteCartItem={props.deleteCartItem}></ShoppingCartList>;
         case 1:
           return (
           <form style={{margin: '32px 16px', marginTop: 16}} noValidate autoComplete="off">
@@ -311,6 +311,7 @@ const QontoConnector = withStyles({
                             color="primary"
                             onClick={handleNext}
                             className={classes.button}
+                            disabled={props.shoppingCart.length === 0}
                         >
                             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                         </Button>

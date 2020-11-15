@@ -8,7 +8,6 @@ import Container from '@material-ui/core/Container';
 import AppNavBar from './components/AppNavBar';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Fab from '@material-ui/core/Fab';
-import BookDialog from './components/dialogs/BookDialog';
 import CheckoutDialog from './components/dialogs/CheckoutDialog';
 import Messenger from './components/Messenger';
 import SellBookForm from './components/SellBookForm';
@@ -43,39 +42,45 @@ const useStyles = makeStyles((theme) => ({
 function App() {
 
   const [sampleBooks, setSampleBooks] = useState([
-    {name: 'Performance Modeling and Design of Computer Systems', course: 'COMPSCI 4E03', sellerLocation: 'Toronto, ON', price: 40, img:'/src/img/textbook1.jpg', id: 1},
-    {name: 'Calculus Early Trancendentals', course: 'MATH 1Z03', sellerLocation: 'Hamilton, ON', price: 20, img:'/src/img/textbook1.jpg', id: 2},
-    {name: 'Environmental Science: Toward A Sustainable Future', course: 'ENVIRSCI 1C03', sellerLocation: 'Toronto, ON', price: 12, img:'/src/img/textbook1.jpg', id: 3},
-    {name: 'Fundamentals of Fluid Mechanics', course: 'PHYSICS 1E03', sellerLocation: 'Toronto, ON', price: 15, img:'../img/textbook4.jpg', id: 4}
+    {name: 'Performance Modeling and Design of Computer Systems', course: 'COMPSCI 4E03', sellerLocation: 'Toronto, ON', price: 40, img:'textbook1.jpg', id: 1},
+    {name: 'Calculus Early Trancendentals', course: 'MATH 1Z03', sellerLocation: 'Hamilton, ON', price: 20, img:'textbook2.jpg', id: 2},
+    {name: 'Fundamentals of Fluid Mechanics', course: 'PHYSICS 1E03', sellerLocation: 'Buffalo, NY', price: 15, img:'textbook4.jpg', id: 3}
   ])
 
   const [shoppingCart, setShoppingCart] = useState([
-    {bookName: 'Performance Modeling and Design of Computer Systems', sellerLocation: 'Toronto, ON', price: 40, id: 1},
-    {bookName: 'Calculus Early Trancendentals', sellerLocation: 'Hamilton, ON', price: 20, id: 2},
-    {bookName: 'Book Name', sellerLocation: 'Toronto, ON', price: 12, id: 3},
-    {bookName: 'Book Name', sellerLocation: 'Toronto, ON', price: 15, id: 4},
   ]);
 
   const [bookListings, setBookListings] = useState([]);
 
   const createListing = (listingData) => {
-    alert('hi');
+    if (bookListings.length > 0) {
+      listingData.id = bookListings[bookListings.length - 1].id + 1;
+    } else {
+      listingData.id = 0;
+    }
     setBookListings([...bookListings, listingData]);
   }
 
   const addToCart = (book) => {
-    book.id = shoppingCart[shoppingCart.length - 1].id + 1;
+    if (shoppingCart.length > 0) {
+      book.id = shoppingCart[shoppingCart.length - 1].id + 1;
+    } else {
+      book.id = 0;
+    }
+    
     setShoppingCart([...shoppingCart, book]);
-    openSnackbar();
+    openIsSnackbarOpenAddtoCart();
   }
 
-  const deleteCartItem = () => {
+  const deleteCartItem = (itemChosen) => {
+    let copy = [...shoppingCart];
+    const toDelete = copy.find(item => item.id === itemChosen.id);
+    copy.splice(copy.indexOf(toDelete), 1);
+    setShoppingCart(copy);
   }
 
 
   const [isShoppingCartOpened, setIsShoppingCartOpened] = useState(false)
-
-  const [bookDialogIsOpen, setBookDialogIsOpen] = React.useState(false);
 
   const [checkoutDialogIsOpen, setCheckoutDialogIsOpen] = React.useState(false);
 
@@ -87,31 +92,39 @@ function App() {
     setCheckoutDialogIsOpen(false);
   };
 
-  const openBookDialog = () => {
-    setBookDialogIsOpen(true);
-  };
 
-  const closeBookDialog = () => {
-    setBookDialogIsOpen(false);
-  };
 
   const toggleShoppingCart = (isOpened) => (event) => {
     setIsShoppingCartOpened(isOpened);
   };
 
-  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+  const [isSnackbarOpenAddtoCart, setIsSnackbarOpenAddtoCart] = useState(false);
 
-  const openSnackbar = () => {
-    setIsSnackbarOpen(true);
+  const openIsSnackbarOpenAddtoCart = () => {
+    setIsSnackbarOpenAddtoCart(true);
   };
 
-  const closeSnackbar = (event, reason) => {
+  const closeIsSnackbarOpenAddtoCart = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
 
-    setIsSnackbarOpen(false);
+    setIsSnackbarOpenAddtoCart(false);
   };
+
+  // const [isSnackbarOpenCreateListing, setIsSnackbarOpenCreateListing] = useState(false);
+
+  // const openIsSnackbarOpenCreateListing = () => {
+  //   setIsSnackbarOpenCreateListing(true);
+  // };
+
+  // const closeIsSnackbarOpenCreateListing = (event, reason) => {
+  //   if (reason === 'clickaway') {
+  //     return;
+  //   }
+
+  //   setIsSnackbarOpenCreateListing(false);
+  // };
 
   const classes = useStyles();
 
@@ -141,8 +154,7 @@ function App() {
             </Route>
             {/* Result of user search here */}
             <Route path="/search">
-              <SearchRoute bookDialogIsOpen={bookDialogIsOpen} setBookDialogIsOpen={setBookDialogIsOpen}
-                           addToCart={addToCart} sampleBooks={sampleBooks}></SearchRoute>
+              <SearchRoute addToCart={addToCart} sampleBooks={sampleBooks}></SearchRoute>
             </Route>
 
             <Route path="/Messenger">
@@ -163,29 +175,52 @@ function App() {
 
           </Switch>
 
-          <BookDialog bookDialogIsOpen={bookDialogIsOpen} closeBookDialog={closeBookDialog}></BookDialog>
-          <CheckoutDialog shoppingCart={shoppingCart} checkoutDialogIsOpen={checkoutDialogIsOpen} closeCheckoutDialog={closeCheckoutDialog}></CheckoutDialog>
+          <CheckoutDialog shoppingCart={shoppingCart} checkoutDialogIsOpen={checkoutDialogIsOpen} closeCheckoutDialog={closeCheckoutDialog}
+                          deleteCartItem={deleteCartItem}></CheckoutDialog>
 
+          {/* Item added to Cart */}
           <Snackbar
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'left',
             }}
-            open={isSnackbarOpen}
+            open={isSnackbarOpenAddtoCart}
             autoHideDuration={3000}
-            onClose={closeSnackbar}
+            onClose={closeIsSnackbarOpenAddtoCart}
             message="Added to Shopping Cart"
             action={
               <React.Fragment>
                 <Button color="secondary" size="small" onClick={openCheckoutDialog}>
                   VIEW
                 </Button>
-                <IconButton size="small" aria-label="close" color="inherit" onClick={closeSnackbar}>
+                <IconButton size="small" aria-label="close" color="inherit" onClick={closeIsSnackbarOpenAddtoCart}>
                   <CloseIcon fontSize="small" />
                 </IconButton>
               </React.Fragment>
             }
           />
+
+          {/* Book Listing Created */}
+          {/* <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            open={isSnackbarOpenCreateListing}
+            autoHideDuration={3000}
+            onClose={closeIsSnackbarOpenCreateListing}
+            message="Book Listing Created!"
+            action={
+              <React.Fragment>
+                <Button color="secondary" size="small" onClick={openCheckoutDialog}>
+                  VIEW
+                </Button>
+                <IconButton size="small" aria-label="close" color="inherit" onClick={closeIsSnackbarOpenCreateListing}>
+                  <CloseIcon fontSize="small" />
+                </IconButton>
+              </React.Fragment>
+            }
+          /> */}
 
         </div>
       </Router>

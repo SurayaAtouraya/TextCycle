@@ -13,7 +13,7 @@ const BookDialog = (props) => {
     return (
         <div >
         <Dialog open={props.bookDialogIsOpen} onClose={props.closeBookDialog} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Checkout</DialogTitle>
+            <DialogTitle id="form-dialog-title">{props.bookData.name}</DialogTitle>
                 <DialogContent>
                     <h1>test</h1>
                 </DialogContent>
