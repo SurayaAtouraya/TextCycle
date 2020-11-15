@@ -13,6 +13,21 @@ import BookListingCard from '../BookListingCard';
 
 
 const SearchRoute = (props) => {
+
+    console.log(props.sampleBooks)
+
+    const bookListings = 
+    props.sampleBooks.map( 
+      (bookListing) => 
+      <React.Fragment key={bookListing.id}>
+        <Grid item xs={4}>
+            <BookListingCard bookDialogIsOpen={props.bookDialogIsOpen} setBookDialogIsOpen={props.setBookDialogIsOpen} addToCart={props.addToCart}
+                            bookData={bookListing}>
+            </BookListingCard>
+        </Grid>
+      </React.Fragment>
+    );
+
     return (
         <div>
             <Container maxWidth="lg">
@@ -24,19 +39,8 @@ const SearchRoute = (props) => {
                 </Grid>
                 <Button variant="contained" color="primary" component={Link} to="/">Back to Home page</Button>
 
-                <Grid container spacing={3} style={{marginTop: 16}}>
-                    <Grid item xs={3}>
-                        <BookListingCard bookDialogIsOpen={props.bookDialogIsOpen} setBookDialogIsOpen={props.setBookDialogIsOpen} addToCart={props.addToCart}></BookListingCard>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <BookListingCard bookDialogIsOpen={props.bookDialogIsOpen} setBookDialogIsOpen={props.setBookDialogIsOpen} addToCart={props.addToCart}></BookListingCard>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <BookListingCard bookDialogIsOpen={props.bookDialogIsOpen} setBookDialogIsOpen={props.setBookDialogIsOpen} addToCart={props.addToCart}></BookListingCard>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <BookListingCard bookDialogIsOpen={props.bookDialogIsOpen} setBookDialogIsOpen={props.setBookDialogIsOpen} addToCart={props.addToCart}></BookListingCard>
-                    </Grid>
+                <Grid container spacing={4} style={{marginTop: 16}}>
+                    {bookListings}
                 </Grid>
             </Container>
         </div>

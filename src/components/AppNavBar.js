@@ -15,6 +15,14 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Button from '@material-ui/core/Button';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -115,8 +123,8 @@ const AppNavBar = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>My Orders</MenuItem>
+      <MenuItem component={Link} to="/userlistings">My Book Listings</MenuItem>
     </Menu>
   );
 
@@ -157,11 +165,6 @@ const AppNavBar = (props) => {
                 <MailIcon />
               </Badge>
             </IconButton>
-            {/* <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
 
             {/* Open Checkout Dialog (Starts at Shopping Cart Review) */}
             <IconButton
@@ -185,6 +188,8 @@ const AppNavBar = (props) => {
             >
               <AccountCircle />
             </IconButton>
+
+            <Button color="inherit" component={Link} to="/createlisting" style={{marginLeft: 16}}>Create Book Listing</Button>
 
           </div>
         </Toolbar>

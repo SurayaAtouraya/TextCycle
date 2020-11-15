@@ -3,3 +3,15 @@ body > div.MuiDrawer-root.MuiDrawer-modal > div.MuiPaper-root.MuiDrawer-paper.Mu
     width: 1280px;
     margin: 0 auto;
 }
+
+.MuiCardHeader-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.MuiCardHeader-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

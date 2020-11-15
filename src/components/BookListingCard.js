@@ -14,17 +14,16 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import textbook from '../img/textbook3.jpg';
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+import ReportIcon from '@material-ui/icons/Report';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // display: 'flex',
-    // width: 750,
-    // minWidth: 750,
-    // margin: '0 auto',
-    // marginBottom: '2rem',
     borderRadius: 4,
     boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
-    // height: 253
   },
   media: {
     height: 0,
@@ -57,28 +56,35 @@ const BookListingCard = (props) => {
     <Card className={classes.root}>
       <CardActionArea onClick={() => openBookDialog()}>
         <CardHeader
+          action={
+            <div>
+              <IconButton aria-label="bookmark">
+                <BookmarkBorderIcon />
+              </IconButton>
+              <IconButton aria-label="report">
+                <ReportIcon />
+              </IconButton>
+            </div>
+          }
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
               R
             </Avatar>
           }
-          title="Book Title"
+          title={props.bookData.name}
           subheader="Hamilton, ON"
         />
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/paella.jpg"
-          title="Paella dish"
+        <CardMedia 
+          style={{objectFit: 'fill'}}
+          component="img"
+          alt="Contemplative Reptile"
+          height="400"
+          image={textbook}
+          title="Contemplative Reptile"
         />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party dish and a fun meal to cook together with your
-            guests. Add 1 cup of frozen peas along with the mussels, if you like.
-          </Typography>
-        </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant="outlined" color="primary" onClick={() => props.addToCart()}>
+        <Button variant="outlined" color="primary" onClick={() => props.addToCart({name: 'bookName', sellerLocation: 'sellerLocation', price: 30, id: null})}>
             Add to Cart
         </Button>
         <Button variant="contained" color="primary">
