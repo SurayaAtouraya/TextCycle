@@ -1,3 +1,4 @@
+import React from 'react';
 import Message from './Message'
 import './ConvoListItem.css';
 import moment from 'moment';
