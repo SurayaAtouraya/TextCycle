@@ -17,6 +17,7 @@ const SellBookRoute = (props) => {
     return (
         <div>
             <Container maxWidth="lg">
+            <Button variant="contained" color="primary" component={Link} to="/" style={{marginTop: '3rem', marginLeft: '2rem'}}>Back to Home page</Button>
                 <Grid container spacing={0} direction="column" justify="center" alignItems="center" style={{marginTop: '3rem'}}>
                     <Grid item xs={12}>
                         <SellBookForm createListing={props.createListing}></SellBookForm>

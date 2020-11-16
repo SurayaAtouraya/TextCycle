@@ -26,7 +26,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import SellBookRoute from './components/routes/SellBookRoute';
 import UserListingsRoute from './components/routes/UserListingsRoute';
 import UserOrdersRoute from './components/routes/UserOrdersRoute';
-
+import SearchIcon from '@material-ui/icons/Search';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import { MenuBook } from '@material-ui/icons';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import MessageIcon from '@material-ui/icons/Message';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  }
 }));
 
 function App() {
@@ -142,17 +149,39 @@ function App() {
             {/* Home page, should contain search bar for books, if not logged in, only display sign in/up result. */}
             <Route exact path="/">
               <Container maxWidth="lg">
-                <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <h1>search bar goes here</h1>
-                    <SearchCard></SearchCard>
-                    <Button variant="contained" color="primary" component={Link} to="/search">Simulate Search</Button>
+                <Grid container spacing={6} style={{marginTop: '3rem'}}>
+                <Grid item xs={12} style={{textAlign: 'center'}}>
+                  <h1>TextCycle Home Screen</h1>
+                </Grid>
+                  <Grid item xs={4} style={{textAlign: 'center'}}>
+                  <Fab variant="extended" component={Link} to="/search">
+                    <SearchIcon className={classes.extendedIcon}/>
+                      Search for a Book
+                  </Fab>
                   </Grid>
-                  <Grid item xs={12}>
-                    <h1>IF not logged in, show sign up/ login page instead</h1>
+                  <Grid item xs={4} style={{textAlign: 'center'}}>
+                    <Fab variant="extended" component={Link} to="/createlisting">
+                      <MenuBookIcon className={classes.extendedIcon}/>
+                        Create Book Listing
+                    </Fab>
                   </Grid>
-                  <Grid item xs={3}>
-                    {/* <BookListingCard></BookListingCard> */}
+                  <Grid item xs={4} style={{textAlign: 'center'}}>
+                    <Fab variant="extended" onClick={openCheckoutDialog}>
+                      <MessageIcon className={classes.extendedIcon}/>
+                        View Shopping Cart
+                    </Fab>
+                  </Grid>
+                  <Grid item xs={4} style={{textAlign: 'center'}}>
+                    <Fab variant="extended" component={Link} to="/Messenger">
+                      <MessageIcon className={classes.extendedIcon}/>
+                        View Messages
+                    </Fab>
+                  </Grid>
+                  <Grid item xs={4} style={{textAlign: 'center'}}>
+                    <Fab variant="extended" component={Link} to="/userlistings">
+                      <LibraryBooksIcon className={classes.extendedIcon}/>
+                        Manage My Book Listings
+                    </Fab>
                   </Grid>
                 </Grid>
               </Container>

@@ -39,13 +39,13 @@ const SearchRoute = (props) => {
     return (
         <div>
             <Container maxWidth="lg">
-                <h1>Search Page</h1> 
+                <h1 style={{display: 'inline-block'}}>Search Page</h1> 
+                <Button variant="contained" color="primary" component={Link} to="/" style={{marginBottom: '1rem', marginLeft: '2rem'}}>Back to Home page</Button>
                 <Grid container spacing={0} direction="column" justify="center" alignItems="center">
                     <Grid item xs={12}>
                         <SearchCard></SearchCard>
                     </Grid>
                 </Grid>
-                <Button variant="contained" color="primary" component={Link} to="/">Back to Home page</Button>
 
                 <Grid container spacing={4} style={{marginTop: 16}}>
                     {bookListings}
