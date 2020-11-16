@@ -226,25 +226,25 @@ const QontoConnector = withStyles({
           <form style={{margin: '32px 16px', marginTop: 16}} noValidate autoComplete="off">
             <Grid container spacing={3} justify="center" alignItems="center">
               <Grid item xs={6}>
-                <TextField fullWidth id="standard-basic" label="First Name" />
+                <TextField fullWidth label="First Name" />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth id="standard-basic" label="Last Name" />
+                <TextField fullWidth label="Last Name" />
               </Grid>
               <Grid item xs={12}>
-                <TextField fullWidth id="standard-basic" label="Address Line" />
+                <TextField fullWidth label="Address Line" />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth id="standard-basic" label="City" />
+                <TextField fullWidth label="City" />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth id="standard-basic" label="Province" />
+                <TextField fullWidth label="Province" />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth id="standard-basic" label="Postal Code" />
+                <TextField fullWidth label="Postal Code" />
               </Grid>
               <Grid item xs={6}>
-                <TextField fullWidth id="standard-basic" label="Country" />
+                <TextField fullWidth label="Country" />
               </Grid>
             </Grid>
           </form>
@@ -255,16 +255,16 @@ const QontoConnector = withStyles({
             <form style={{margin: '32px 16px', marginTop: 16}} noValidate autoComplete="off">
               <Grid container spacing={3} justify="center" alignItems="center">
                 <Grid item xs={6}>
-                  <TextField fullWidth id="standard-basic" label="Name on Card" />
+                  <TextField fullWidth label="Name on Card" />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField fullWidth id="standard-basic" label="Card Number" />
+                  <TextField fullWidth label="Card Number" />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField fullWidth id="standard-basic" label="Expiry Date" />
+                  <TextField fullWidth label="Expiry Date" />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField fullWidth id="standard-basic" label="CVV" />
+                  <TextField fullWidth label="CVV" />
                 </Grid>
               </Grid>
           </form>

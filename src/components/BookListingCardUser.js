@@ -10,13 +10,8 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-import ReportIcon from '@material-ui/icons/Report';
+import ClearIcon from '@material-ui/icons/Clear';
 import Chip from '@material-ui/core/Chip';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -62,11 +57,8 @@ const BookListingCard = (props) => {
         <CardHeader
           action={
             <div>
-              <IconButton aria-label="bookmark">
-                <BookmarkBorderIcon />
-              </IconButton>
-              <IconButton aria-label="report">
-                <ReportIcon />
+              <IconButton aria-label="delete" onClick={() => props.deleteListing(props.bookData)}>
+                <ClearIcon />
               </IconButton>
             </div>
           }
@@ -82,7 +74,7 @@ const BookListingCard = (props) => {
           style={{objectFit: 'fill'}}
           component="img"
           height="400"
-          image={props.bookData.img}
+          image='textbook3.jpg'
           title="Contemplative Reptile"
         />
       </CardActionArea>
@@ -106,10 +98,11 @@ const BookListingCard = (props) => {
           <Chip label={props.bookData.saleType} color="primary"/>
         </Grid>
         <Grid item xs={6} style={{textAlign: 'right'}}>
-          <Button variant="outlined" color="primary" onClick={() => props.addToCart(props.bookData)}>
-            ${props.bookData.price} - Add to Cart
-          </Button>
+          <p style={{margin: 0}}>
+              ${props.bookData.price}
+          </p>
         </Grid>
+
       
       </Grid>
 

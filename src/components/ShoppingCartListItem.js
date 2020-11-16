@@ -27,7 +27,7 @@ import { DeleteCartItemContext } from './../App';
                 <ImageIcon />
                 </Avatar>
             </ListItemAvatar>
-            <ListItemText style={{width: '100%'}} primary={props.item.name} secondary={props.item.sellerLocation} />
+            <ListItemText style={{width: '100%'}} primary={props.item.name} secondary={props.item.ed} />
             <ListItemText secondary={"$" + props.item.price.toString()} style={{textAlign: 'right', margin: 0, marginRight: 16}}/>
             <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete" onClick={() => props.deleteCartItem(props.item)}>

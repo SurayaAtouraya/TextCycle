@@ -42,9 +42,12 @@ const useStyles = makeStyles((theme) => ({
 function App() {
 
   const [sampleBooks, setSampleBooks] = useState([
-    {name: 'Performance Modeling and Design of Computer Systems', course: 'COMPSCI 4E03', sellerLocation: 'Toronto, ON', price: 40, img:'textbook1.jpg', id: 1},
-    {name: 'Calculus Early Trancendentals', course: 'MATH 1Z03', sellerLocation: 'Hamilton, ON', price: 20, img:'textbook2.jpg', id: 2},
-    {name: 'Fundamentals of Fluid Mechanics', course: 'PHYSICS 1E03', sellerLocation: 'Buffalo, NY', price: 15, img:'textbook4.jpg', id: 3}
+    {name: 'Performance Modeling and Design of Computer Systems', course: 'COMPSCI 4E03', ed: '7th Edition', price: 40, img:'textbook1.jpg',
+     desc: 'Some pages with pen marking on them, minor wear on the front.', saleType: 'Shipping Only', id: 1},
+    {name: 'Calculus Early Trancendentals', course: 'MATH 1Z03', ed: '3rd Edition', price: 20, img:'textbook2.jpg',
+     desc: 'Like new, barely used comes with the solutions manual.', saleType: 'Shipping or Pickup', id: 2},
+    {name: 'Fundamentals of Fluid Mechanics', course: 'PHYSICS 1E03', ed: '5th Edition', price: 15, img:'textbook4.jpg',
+     desc: 'Some damage to the book spine, some pages ripped.', saleType: 'Shipping Only', id: 3}
   ])
 
   const [shoppingCart, setShoppingCart] = useState([
@@ -60,6 +63,22 @@ function App() {
     }
     setBookListings([...bookListings, listingData]);
   }
+
+  const deleteListing = (listingData) => {
+    let copy = [...bookListings];
+    console.log(bookListings)
+    setBookListings(
+      copy.splice(
+        copy.indexOf(
+          copy.find(listing => listing.id === listingData.id)
+        )
+        , 1)
+    );
+    window.location.reload();
+  }
+
+  React.useEffect(() => {
+  }, [bookListings]);
 
   const addToCart = (book) => {
     if (shoppingCart.length > 0) {
@@ -112,20 +131,6 @@ function App() {
     setIsSnackbarOpenAddtoCart(false);
   };
 
-  // const [isSnackbarOpenCreateListing, setIsSnackbarOpenCreateListing] = useState(false);
-
-  // const openIsSnackbarOpenCreateListing = () => {
-  //   setIsSnackbarOpenCreateListing(true);
-  // };
-
-  // const closeIsSnackbarOpenCreateListing = (event, reason) => {
-  //   if (reason === 'clickaway') {
-  //     return;
-  //   }
-
-  //   setIsSnackbarOpenCreateListing(false);
-  // };
-
   const classes = useStyles();
 
   return (
@@ -162,7 +167,7 @@ function App() {
             </Route>
 
             <Route path="/userlistings">
-              <UserListingsRoute></UserListingsRoute>
+              <UserListingsRoute bookListings={bookListings} deleteListing={deleteListing}></UserListingsRoute>
             </Route>
 
             <Route path="/createlisting">
@@ -199,28 +204,6 @@ function App() {
               </React.Fragment>
             }
           />
-
-          {/* Book Listing Created */}
-          {/* <Snackbar
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            open={isSnackbarOpenCreateListing}
-            autoHideDuration={3000}
-            onClose={closeIsSnackbarOpenCreateListing}
-            message="Book Listing Created!"
-            action={
-              <React.Fragment>
-                <Button color="secondary" size="small" onClick={openCheckoutDialog}>
-                  VIEW
-                </Button>
-                <IconButton size="small" aria-label="close" color="inherit" onClick={closeIsSnackbarOpenCreateListing}>
-                  <CloseIcon fontSize="small" />
-                </IconButton>
-              </React.Fragment>
-            }
-          /> */}
 
         </div>
       </Router>

@@ -123,8 +123,8 @@ const AppNavBar = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>My Orders</MenuItem>
-      <MenuItem component={Link} to="/userlistings">My Book Listings</MenuItem>
+      <MenuItem onClick={handleMenuClose} component={Link} to="/orders">My Orders</MenuItem>
+      <MenuItem onClick={handleMenuClose} component={Link} to="/userlistings">My Book Listings</MenuItem>
     </Menu>
   );
 

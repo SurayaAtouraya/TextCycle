@@ -27,26 +27,49 @@ const useStyles = makeStyles((theme) => ({
 	  padding: 24,
 	//   overflow: 'hidden'
 	},
+	chipSelected: {
+		color: 'green'
+	},
+	chip: {
+		backgroundColor: 'white'
+	}
   }));
 
 function SellBookForm(props){
 	
 	const classes = useStyles();
 
-	const [courseName, setCourseName] = React.useState('');
+	const [name, setName] = React.useState('');
+	const [course, setCourse] = React.useState('')
+	const [desc, setDesc] = React.useState('')
+	const [price, setPrice] = React.useState('')
+	const [ed, setEd] = React.useState('')
+	const [saleType, setsaleType] = React.useState('Shipping Only');
 
 	const [isListingCreated, setIsListingCreated] = React.useState(false);
 
-	const handleChange = (event) => {
-		setCourseName(event.target.value);
-	};
+	const setNameHandler = (event) => {
+		setName(event.target.value);
+	}
 
-	const handleClick = () => {
-		console.info('You clicked the Chip.');
-	};
+	const setCourseHandler = (event) => {
+		setCourse(event.target.value);
+	}
+
+	const setDescHandler = (event) => {
+		setDesc(event.target.value);
+	}
+
+	const setPriceHandler = (event) => {
+		setPrice(event.target.value);
+	}
+
+	const setEdHandler = (event) => {
+		setEd(event.target.value);
+	}
 
 	const createListing = () => {
-		props.createListing({name: 'Name test', course: 'COMPSCI', sellerLocation: 'New York City, NY', price: 25, id: null});
+		props.createListing({name: name, course: 'COMPSCI', desc: desc, ed: ed, price: price, saleType: saleType, id: null});
 		setIsListingCreated(true);
 	}
 
@@ -64,7 +87,7 @@ function SellBookForm(props){
 								{/* Book Name */}
 								<Grid item xs={12} >
 									<FormControl style={{width: '100%'}}>
-										<TextField label="Book Name" />
+										<TextField label="Book Name" value={name} onChange={setNameHandler}/>
 									</FormControl>
 								</Grid>
 	
@@ -72,7 +95,7 @@ function SellBookForm(props){
 								<Grid item xs={12} >
 									<FormControl style={{width: '100%'}}>
 										<InputLabel>Course Name</InputLabel>
-										<Select value={courseName} onChange={handleChange}>
+										<Select>
 										<MenuItem value={10}>COMPSCI 4E03</MenuItem>
 										<MenuItem value={20}>MATH 1Z03</MenuItem>
 										<MenuItem value={30}>ENVIRSCI 1C03</MenuItem>
@@ -84,14 +107,15 @@ function SellBookForm(props){
 								{/* Book Description */}
 								<Grid item xs={12} style={{margin: '8px 0'}}>
 									<FormControl style={{width: '100%'}}>
-										<TextField multiline rows={4} label="Book Description" variant="outlined"/>
+										<TextField multiline rows={4} label="Book Description" variant="outlined"
+												   value={desc} onChange={setDescHandler}/>
 									</FormControl>
 								</Grid>
 	
 								{/* Edition */}
 								<Grid item xs={6}>
 									<FormControl style={{width: '100%'}}>
-										<TextField label="Book Edition" />
+										<TextField label="Book Edition" value={ed} onChange={setEdHandler} />
 									</FormControl>
 								</Grid>
 	
@@ -101,7 +125,7 @@ function SellBookForm(props){
 									<InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
 									<OutlinedInput
 										startAdornment={<InputAdornment position="start">$</InputAdornment>}
-										labelWidth={60}
+										labelWidth={60} value={price} onChange={setPriceHandler}
 									/>
 								</FormControl>
 								</Grid>
@@ -118,9 +142,12 @@ function SellBookForm(props){
 						/>
 						<div>
 							<h3 style={{textAlign: 'center', color: '#9e9e9e', fontWeight: 'normal', margin: '11.5px 0'}}> Delivery Options </h3>
-							<Chip label="Pickup Only" onClick={handleClick} variant="outlined"/>
-							<Chip label="Shipping Only" onClick={handleClick} variant="outlined" style={{margin: '0 16px'}}/>
-							<Chip label="Pickup or Shipping" onClick={handleClick} variant="outlined"/>
+							<Chip label="Pickup Only" onClick={() => setsaleType('Pickup Only')}
+								  className={saleType === 'Pickup Only' ? classes.chipSelected : classes.chip }/>
+							<Chip label="Shipping Only" onClick={() => setsaleType('Shipping Only')} style={{margin: '0 16px'}}
+								  className={saleType === 'Shipping Only' ? classes.chipSelected : classes.chip }/>
+							<Chip label="Pickup or Shipping" onClick={() => setsaleType('Pickup or Shipping')}
+								  className={saleType === 'Pickup or Shipping' ? classes.chipSelected : classes.chip }/>
 						</div>
 	
 						</Grid>
