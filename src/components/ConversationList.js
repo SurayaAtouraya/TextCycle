@@ -14,10 +14,10 @@ import './ConversationList.css'
   {	
 
   	const conversations = [
-						{name:"John Smith",text:"This is a message",photo:0},
+						{name:"John Smith",text:"Is it still available?",photo:0},
 						{name:"Joe Shirma",text:"This is a message",photo:1},
-						{name:"Philip James",text:"This is a message",photo:2},
-						{name:"Sam Deesa",text:"This is a message",photo:3}
+						{name:"Philip James",text:"Hello!",photo:2},
+						{name:"Sam Deesa",text:"I'm interested!",photo:3}
 					];
 
   	return (<div>

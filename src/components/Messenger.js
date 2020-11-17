@@ -1,8 +1,10 @@
 import React from 'react';
 import ConversationList from './ConversationList';
 import MessageList from './MessageList'
+import Message from './Message'
 import './Messenger.css';
 import './Compose.css'
+import './Message.css';
 
   class Messenger extends React.Component
   {
@@ -71,13 +73,6 @@ import './Compose.css'
 
         <div className="scrollable content">
           <MessageList />
-          <div className="compose">
-            <input
-              type="text"
-              className="compose-input"
-              placeholder="Type a message, @name"
-            />
-          </div>
         </div>
         </div>
               )
