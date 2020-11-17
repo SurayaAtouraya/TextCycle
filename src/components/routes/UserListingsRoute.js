@@ -28,11 +28,11 @@ const UserListingsRoute = (props) => {
     return (
         <div>
             <Container maxWidth="lg">
-                <h1>User Listings</h1> 
+                <h1 style={{display: 'inline-block'}}>User Listings</h1> 
+                <Button variant="contained" color="primary" component={Link} to="/" style={{marginBottom: '1rem', marginLeft: '2rem'}}>Back to Home page</Button>
                 <Grid container spacing={3}>
                   {bookListings}
                 </Grid>
-                <Button variant="contained" color="primary" component={Link} to="/">Back to Home page</Button>
             </Container>
         </div>
     );

@@ -4,6 +4,9 @@ import './ConvoListItem.css';
 import moment from 'moment';
 import './MessageList.css'
 import './Compose.css'
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 var messages = [
 {
@@ -18,7 +21,7 @@ var messages = [
   message: 'Is your book still available?',
   timestamp: new Date().getTime()
 }
-]
+];
 
 
 function submitMessages(){
@@ -58,7 +61,8 @@ function submitMessages(){
     var message = {
                     id: Math.random(),
                     message: str,
-                    timestamp: new Date().getTime()
+                    timestamp: new Date().getTime(),
+                    author: 'user'
                   }
     var newMessage = <Message
           key={Math.random()}
@@ -75,18 +79,14 @@ function submitMessages(){
 
   render(){
   	return (<div>
-      <h1>asas</h1>
       <div className="message-list-container">{this.state.messages}</div>
-      <div className="compose">
-        <input
-          id = "textbox"
-          type="text"
-          className="compose-input"
-          placeholder="Type a message, @name"
-        />
-    </div>
-        <button onClick ={this.handleClick}>Send</button>
-      </div>)
+          <div className="compose">
+            <TextField id="textbox" placeholder="Type a message, @name" variant="outlined" style={{width: '75%'}}
+            />
+            <Button variant="contained" color="primary" onClick ={this.handleClick} style={{fontSize: '1.5rem', borderRadius: 0}}>SEND</Button>
+          </div>
+      </div>
+      )
   }
 
 }
