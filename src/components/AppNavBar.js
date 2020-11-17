@@ -135,6 +135,7 @@ const AppNavBar = (props) => {
           <Typography className={classes.title} variant="h6" noWrap>
             TextCycle
           </Typography>
+          <Button color="inherit" component={Link} to="/" style={{marginLeft: 16}}>Home</Button>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
 
