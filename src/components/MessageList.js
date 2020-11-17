@@ -75,7 +75,6 @@ function submitMessages(){
 
   render(){
   	return (<div>
-      <h1>asas</h1>
       <div className="message-list-container">{this.state.messages}</div>
       <div className="compose">
         <input
